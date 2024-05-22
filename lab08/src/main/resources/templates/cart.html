@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>My Cart</title>
+    </head>
+    <body>
+        <h1>Your Cart</h1>
+        <div th:if="${@cart.isEmpty()}">
+            <h2>Your cart is empty</h2>
+        </div>
+        <div th:unless="${@cart.isEmpty()}">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr th:each="item:${@cart.getEntries()}">
+                    <th th:text="${item.getKey()}"></th>
+                    <th th:text="${item.getValue()}"></th>
+                </tr>
+            </table>
+        </div>
+        <h1>Purchase some Items</h1>
+        <form action="/cart" method="POST">
+            <p>Please select an item and quantity:</p>
+
+            Item: <select name="id" size="1" required>
+                <option>Toyota Corolla</option>
+                <option>Audi Quattro</option>
+                <option>Tesla Model 3</option>
+                <option>Toyota Rav 4</option>
+                <option>BMW 2 Series</option>
+            </select> 
+
+            <div>
+                Quantity: <input name="quantity" type="number" size="3" required /> 
+            </div>
+
+            <div>
+                <input type="submit" value="Add to Cart" />
+                <input type="reset" value="Reset" />
+            </div>
+        </form>
+    </body>
+</html>

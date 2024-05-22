@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>The SENG205 Quiz</title>
+    </head>
+    <body>
+        <form action="/quiz" method="POST">
+
+            <div>
+                Who is your lecturer for SENG2050?
+                <input type="text" name="answer1" th:value="${quiz.answer1}" />
+            </div>
+
+            <div>
+                What is your favourite course at UON?
+                <input type="text" name="answer2" th:value="${quiz.answer2}" />
+            </div>
+
+            <div>
+                What University are you at?
+                <input type="text" name="answer3" th:value="${quiz.answer3}" />
+            </div>
+
+            <div>
+                What is your favourite past time?
+                <input type="text" name="answer4" th:value="${quiz.answer4}" />
+            </div>
+
+            <!-- <div th:if="${submitted == null}"> -->
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+            <!-- </div> -->
+
+            <!-- <div th:if="${submitted == true}"> -->
+                <p>
+                    Your Score: <span th:text="${quiz.score}"></span> / 4
+                </p>
+            <!-- </div> -->
+
+        </form>
+    </body>
+</html>
